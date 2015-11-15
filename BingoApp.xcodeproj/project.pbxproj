@@ -16,6 +16,11 @@
 		C6C035501BF83CB100E5AD40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C0354E1BF83CB100E5AD40 /* LaunchScreen.storyboard */; };
 		C6C0355B1BF83CB100E5AD40 /* BingoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0355A1BF83CB100E5AD40 /* BingoAppTests.swift */; };
 		C6C035661BF83CB100E5AD40 /* BingoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C035651BF83CB100E5AD40 /* BingoAppUITests.swift */; };
+		C6C035751BF83CBD00E5AD40 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6C035741BF83CBD00E5AD40 /* CloudKit.framework */; };
+		C6C035771BF83CE300E5AD40 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C035761BF83CE300E5AD40 /* CloudManager.swift */; };
+		C6C035791BF842EE00E5AD40 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C035781BF842EE00E5AD40 /* Player.swift */; };
+		C6C0357B1BF843C000E5AD40 /* PlayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0357A1BF843C000E5AD40 /* PlayersTableViewController.swift */; };
+		C6C0357D1BF8473E00E5AD40 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0357C1BF8473E00E5AD40 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,12 @@
 		C6C035611BF83CB100E5AD40 /* BingoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BingoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C035651BF83CB100E5AD40 /* BingoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingoAppUITests.swift; sourceTree = "<group>"; };
 		C6C035671BF83CB100E5AD40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6C035731BF83CBB00E5AD40 /* BingoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BingoApp.entitlements; sourceTree = "<group>"; };
+		C6C035741BF83CBD00E5AD40 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		C6C035761BF83CE300E5AD40 /* CloudManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
+		C6C035781BF842EE00E5AD40 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		C6C0357A1BF843C000E5AD40 /* PlayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersTableViewController.swift; sourceTree = "<group>"; };
+		C6C0357C1BF8473E00E5AD40 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6C035751BF83CBD00E5AD40 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +93,7 @@
 		C6C035351BF83CB100E5AD40 = {
 			isa = PBXGroup;
 			children = (
+				C6C035741BF83CBD00E5AD40 /* CloudKit.framework */,
 				C6C035401BF83CB100E5AD40 /* BingoApp */,
 				C6C035591BF83CB100E5AD40 /* BingoAppTests */,
 				C6C035641BF83CB100E5AD40 /* BingoAppUITests */,
@@ -101,14 +114,10 @@
 		C6C035401BF83CB100E5AD40 /* BingoApp */ = {
 			isa = PBXGroup;
 			children = (
-				C6C035411BF83CB100E5AD40 /* AppDelegate.swift */,
-				C6C035431BF83CB100E5AD40 /* GameScene.sks */,
-				C6C035451BF83CB100E5AD40 /* GameScene.swift */,
-				C6C035471BF83CB100E5AD40 /* GameViewController.swift */,
-				C6C035491BF83CB100E5AD40 /* Main.storyboard */,
-				C6C0354C1BF83CB100E5AD40 /* Assets.xcassets */,
-				C6C0354E1BF83CB100E5AD40 /* LaunchScreen.storyboard */,
-				C6C035511BF83CB100E5AD40 /* Info.plist */,
+				C6C035811BF8476500E5AD40 /* SupportingFiles */,
+				C6C0357F1BF8474D00E5AD40 /* ViewControllers */,
+				C6C035801BF8475A00E5AD40 /* UserInterface */,
+				C6C0357E1BF8474500E5AD40 /* iCloud */,
 			);
 			path = BingoApp;
 			sourceTree = "<group>";
@@ -129,6 +138,47 @@
 				C6C035671BF83CB100E5AD40 /* Info.plist */,
 			);
 			path = BingoAppUITests;
+			sourceTree = "<group>";
+		};
+		C6C0357E1BF8474500E5AD40 /* iCloud */ = {
+			isa = PBXGroup;
+			children = (
+				C6C035761BF83CE300E5AD40 /* CloudManager.swift */,
+				C6C035781BF842EE00E5AD40 /* Player.swift */,
+				C6C0357C1BF8473E00E5AD40 /* Game.swift */,
+			);
+			name = iCloud;
+			sourceTree = "<group>";
+		};
+		C6C0357F1BF8474D00E5AD40 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C6C035431BF83CB100E5AD40 /* GameScene.sks */,
+				C6C035451BF83CB100E5AD40 /* GameScene.swift */,
+				C6C035471BF83CB100E5AD40 /* GameViewController.swift */,
+				C6C0357A1BF843C000E5AD40 /* PlayersTableViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C6C035801BF8475A00E5AD40 /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				C6C035491BF83CB100E5AD40 /* Main.storyboard */,
+				C6C0354C1BF83CB100E5AD40 /* Assets.xcassets */,
+				C6C0354E1BF83CB100E5AD40 /* LaunchScreen.storyboard */,
+			);
+			name = UserInterface;
+			sourceTree = "<group>";
+		};
+		C6C035811BF8476500E5AD40 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C6C035731BF83CBB00E5AD40 /* BingoApp.entitlements */,
+				C6C035411BF83CB100E5AD40 /* AppDelegate.swift */,
+				C6C035511BF83CB100E5AD40 /* Info.plist */,
+			);
+			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +249,12 @@
 				TargetAttributes = {
 					C6C0353D1BF83CB100E5AD40 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = J7U74N85YF;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					C6C035551BF83CB100E5AD40 = {
 						CreatedOnToolsVersion = 7.1;
@@ -265,7 +321,11 @@
 			files = (
 				C6C035461BF83CB100E5AD40 /* GameScene.swift in Sources */,
 				C6C035481BF83CB100E5AD40 /* GameViewController.swift in Sources */,
+				C6C0357D1BF8473E00E5AD40 /* Game.swift in Sources */,
+				C6C0357B1BF843C000E5AD40 /* PlayersTableViewController.swift in Sources */,
 				C6C035421BF83CB100E5AD40 /* AppDelegate.swift in Sources */,
+				C6C035791BF842EE00E5AD40 /* Player.swift in Sources */,
+				C6C035771BF83CE300E5AD40 /* CloudManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +467,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BingoApp/BingoApp.entitlements;
 				INFOPLIST_FILE = BingoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vaporwarewolf.BingoApp;
@@ -418,6 +479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BingoApp/BingoApp.entitlements;
 				INFOPLIST_FILE = BingoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vaporwarewolf.BingoApp;

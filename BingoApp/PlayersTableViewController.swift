@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreLocation
 
-class PlayersTableViewController: UITableViewController {
-
+class PlayersTableViewController: UITableViewController, CloudManagerDelegate {
+    
+    var cloudMgr = CloudManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +21,16 @@ class PlayersTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+     
+        cloudMgr.delegate = self;
+        
+        
+////        let location = CLLocation(latitude: 37.5, longitude: -122.4)
+////        cloudMgr.fetchEstablishments(location, radiusInMeters: 10000)
+//        cloudMgr.fetchPlayers()
+        
+        cloudMgr.fetchGames()
+	
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,67 +42,33 @@ class PlayersTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+//        return cloudMgr.players.count
+        return cloudMgr.games.count
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Player")
+//        let player = cloudMgr.players[indexPath.row]
+//        cell?.textLabel?.text = player.name
+        
+        let game = cloudMgr.games[indexPath.row]
+        cell?.textLabel?.text = game.title
+        return cell!
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+ 
+
+    func errorUpdating(error: NSError){
+        print("CloudKit Error: " + error.description)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func modelUpdated(){
+        tableView.reloadData()
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
