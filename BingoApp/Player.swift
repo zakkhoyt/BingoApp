@@ -87,11 +87,26 @@ class Player : NSObject, MKAnnotation {
     //        return SeatingType(rawValue: val)
     //    }
     //
-    //    func loadCoverPhoto(completion:(photo: UIImage!) -> ()) {
-    //        //replace this stub
-    //        completion(photo: nil)
-    //    }
-    //
+    
+    func loadCoverPhoto(completion:(photo: UIImage!) -> ()) {
+        // 1
+        dispatch_async(
+            dispatch_get_global_queue(
+                DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)){
+                    var image: UIImage!
+                    // 2
+                    if let asset = self.record.objectForKey("Avatar") as? CKAsset {
+                        // 3
+                        if let url: NSURL! = asset.fileURL {
+                            let imageData = NSData(contentsOfFile: url.path!)!
+                            // 4
+                            image = UIImage(data: imageData) 
+                        }
+                    }
+                    // 5
+                    completion(photo: image) 
+        }
+    }
     //MARK: - map annotation
     
     var coordinate : CLLocationCoordinate2D {
